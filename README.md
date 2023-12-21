@@ -23,7 +23,9 @@ php artisan serve
 ctrl + c
 
 ```
+
 ## Configurazione Laravel
+
 ```bash
 composer require pacificdev/laravel_9_preset
 
@@ -48,12 +50,13 @@ git init
 git add .
 git commit -m "first commit"
 git branch -M main
-git remote add origin your_git_url 
+git remote add origin your_git_url
 git push -u origin main
 
 
 ```
-## Clono progetto da github 
+
+## Clono progetto da github
 
 ```bash
 # copio file .env.example e lo rinomino in .env
@@ -64,12 +67,22 @@ php artisan key:generate
 
 npm install
 
-# inserisco i dati per il collegamento al db in env
-
 # creo il database da phpmyadmin
 
+# inserisco i dati per il collegamento al db in env
 
-# preparo le rotte file web.php es. 
+# creo migration
+php artisan make:migration create_nome_tabella_table
+php artisan make:migration update_users_table --table
+php artisan make:migration add_phone_number_to_users_table
+
+# lancio migration
+php artisan migrate
+
+#popolo il db
+php artisan make:seeder NomeTableSeeder
+
+# preparo le rotte file web.php es.
 Route::get('/books', [BookController::class, 'index'])->name('books.index');
 
 # creo controller
